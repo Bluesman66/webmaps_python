@@ -19,12 +19,14 @@ fg = folium.FeatureGroup(name="My Group")
 
 for lt, ln, el in zip(lat, lon, elev):
     fg.add_child(
-        folium.Marker(
+        folium.CircleMarker(
             location=[lt, ln],
+            radius=6,
             popup=str(el) + "m",
-            icon=folium.Icon(color=color_producer(el))
+            fill_color=color_producer(el),
+            color="grey",
+            fill_opacity=0.7)
         )
-    )
 
 map.add_child(fg)
 
