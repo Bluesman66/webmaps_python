@@ -28,8 +28,9 @@ for lt, ln, el in zip(lat, lon, elev):
             fill_opacity=0.7)
         )
 
-fg.add_child(folium.GeoJson())
+with open("world.json", "r", encoding="utf-8-sig") as world_file:
+    fg.add_child(folium.GeoJson(data=(world_file).read()))
 
 map.add_child(fg)
 
-map.save("map1.html")
+map.save("map2.html")
