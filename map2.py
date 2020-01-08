@@ -29,7 +29,10 @@ for lt, ln, el in zip(lat, lon, elev):
         )
 
 with open("world.json", "r", encoding="utf-8-sig") as world_file:
-    fg.add_child(folium.GeoJson(data=(world_file).read()))
+    fg.add_child(folium.GeoJson(data=world_file.read(),
+        style_function=lambda x: {"fillColor":"yellow" if x["properties"]["POP2005"] < 10000000
+        else "orange" if 10000000 <= x["properties"]["POP2005"] < 20000000 else "red" }))
+
 
 map.add_child(fg)
 
