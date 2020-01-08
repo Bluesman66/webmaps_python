@@ -28,6 +28,8 @@ for lt, ln, el in zip(lat, lon, elev):
             fill_opacity=0.7)
         )
 
+fg.add_child(folium.GeoJson())
+
 map.add_child(fg)
 
 map.save("map1.html")
